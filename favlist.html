@@ -1,0 +1,318 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+</head>
+ <style>
+     table, th, td {
+    border: 1px solid black;
+}
+ <tr>
+          <td class = "tabnum"></td>
+           <td class = "tabname"></td>
+           <td class = "tablink"></td>
+          </tr>
+          <tr>
+          <td class = "tabnum"></td>
+           <td class = "tabname"></td>
+           <td class = "tablink"></td>
+          </tr>
+   
+  </style>
+
+<head>
+<style>
+#div1 {
+    width: 700px;
+    height: 320px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+}
+</style>
+<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+</script>
+</head>
+<body>
+
+<p>Drag the image into the rectangle:</p>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<br>
+<img id="drag1" src="drugs7.jpg" draggable="true" ondragstart="drag(event)" width="628" height="314">
+
+</body>  
+<script>
+  var portnum=9049 
+$(document).ready(function()      
+ {   
+  
+    mylogin=localStorage.getItem("mylogin");
+	
+	if(mylogin==""){
+	alert("Please login first");
+	return;
+	}
+  
+  $("button").click(function()
+	{
+		
+		if(this.id=="Cannabis"){
+		  favtext=$("#Cannabistext").html();
+		}
+    else if(this.id=="Cocaine"){
+		  favtext=$("#Cocainetext").html();
+		}
+    else if(this.id=="Heroin"){
+		  favtext=$("#Herointext").html();
+		}
+  else if(this.id=="Ketamine"){
+		  favtext=$("#Ketaminetext").html();
+		}
+  else if(this.id=="Methamphetamine"){
+		  favtext=$("#Methamphetaminetext").html();
+		}
+   }
+		)
+   
+	
+        
+          var mydata="user="+mylogin+"&fav="+favtext;
+          var mylink="http://port-"+portnum+".20180606-chocoleung928829004.codeanyapp.com/newlogin";
+        alert(mydata);
+				$.ajax(
+				{
+		     	/*url: "http://port-9000.305server-idm4smb32469.codeanyapp.com/Login", */
+					//url: "http://10.10.4.9:9011/addfavourlist",
+          url: mylink
+					type: 'POST',
+					data: mydata,
+					success: function(resultReturn)
+					{ 
+						//alert("search success");
+           alert(resultReturn);
+						//alert(JSON.stringify(resultReturn));
+			      var _stringObj = JSON.stringify(resultReturn);
+			      var stringObj = JSON.parse(resultReturn);
+			      for(i = 0; i < stringObj.length; i++)
+            {
+					    var num = i + 1;
+					    document.getElementsByClassName("tabnum")[i].innerHTML = num;
+					    document.getElementsByClassName("tabname")[i].innerHTML = stringObj[i].texttitle;
+				      document.getElementsByClassName("tablink")[i].innerHTML = stringObj[i].command;
+				     }
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+						console.log(textStatus);
+            alert(xhr.responseText);
+      		}
+				});
+			
+   });
+   
+   
+   
+   $("#readfav").click(function()
+	{
+		alert("read");
+		
+        
+          var mydata="user="+mylogin;
+          var mylink="http://port-"+portnum+".20180606-chocoleung928829004.codeanyapp.com/newlogin";
+        
+				$.ajax(
+				{
+					/*url: "http://port-9000.305server-idm4smb32469.codeanyapp.com/Login", */ 
+					//url: "http://10.10.4.9:9011/readfavourlist",
+          url: mylink
+					type: 'POST',
+					data: mydata,
+					success: function(resultReturn)
+					{ 
+						//alert("search success");
+           alert(resultReturn);
+						//alert(JSON.stringify(resultReturn));
+			    //  var _stringObj = JSON.stringify(resultReturn);
+			      var stringObj = JSON.parse(resultReturn);
+				  alert(stringObj.length);
+			      for(i = 0; i < stringObj.length; i++)
+            {
+					    var num = i + 1;
+					    document.getElementsByClassName("tabnum")[i].innerHTML = num;
+					    document.getElementsByClassName("tabname")[i].innerHTML = stringObj[i].user + "<div id='"+stringObj[i]._id+"' class='removebutton'>Remove</a>";
+				      document.getElementsByClassName("tablink")[i].innerHTML = stringObj[i].favourite;
+					  document.getElementsByClassName("removelink")[i].innerHTML = stringObj[i]._id;
+				     }
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+						console.log(textStatus);
+            alert(xhr.responseText);
+      		}
+				});
+			
+   });
+   
+   
+   
+   
+   $(".removelink").click(function(e)
+	{
+		
+		alert($(this).closest('tr').children('td.removelink').text());
+		
+		removeid=$(this).closest('tr').children('td.removelink').text();
+		
+	
+        
+          var mydata="removeid="+removeid;
+          var mylink="http://port-"+portnum+".20180606-chocoleung928829004.codeanyapp.com/newlogin";
+        alert(mydata);
+				$.ajax(
+				{
+					/*url: "http://port-9000.305server-idm4smb32469.codeanyapp.com/Login", */
+					//url: "http://10.10.4.9:9011/removefavourlist",
+          url: mylink
+					type: 'POST',
+					data: mydata,
+					success: function(resultReturn)
+					{ 
+						//alert("search success");
+           alert(resultReturn);
+						//alert(JSON.stringify(resultReturn));
+			      var _stringObj = JSON.stringify(resultReturn);
+			      var stringObj = JSON.parse(resultReturn);
+			      for(i = 0; i < stringObj.length; i++)
+            {
+					    var num = i + 1;
+					    document.getElementsByClassName("tabnum")[i].innerHTML = num;
+					    document.getElementsByClassName("tabname")[i].innerHTML = stringObj[i].texttitle;
+				      document.getElementsByClassName("tablink")[i].innerHTML = stringObj[i].command;
+				     }
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+						console.log(textStatus);
+            alert(xhr.responseText);
+      		}
+				});
+			
+   });
+   
+});
+  
+ 
+</script>
+<body>
+  <body style="background-color:Gainsboro;"></body> 
+  <div class = "mask">
+	<div class = "style1">About Drugs</div>
+    <table style="width:100%">
+     <iframe width="420" height="345" src="https://www.youtube.com/embed/DQA0ToopEsU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      	<br> 
+      <tr>
+    <p style="background-color:LightGray;">
+    <th>Drugs Name</th>
+    <th>Inteoduce</th> 
+    <th>Effect</th>
+    <th>Add Favlist</th>
+  </tr>      
+  	<tr>
+     <th> <div id="Cannabistext">Cannabis </div><img src="cannabis.jpg"></th>
+      <th>Cannabis Sativa plants grow wild throughout most of the tropical and temperate zones of the world. The biologically active agent in the cannabis plant Tetra-hydro-cannibol is highly concentrated in the flowering tops. Herbal cannabis is produced by drying the leaves for several days. Dried cannabis can maintain its potency for several years. The active ingredient can be concentrated by extracting a sticky resin from the flowering tops and once dried, the resin forms into hard black-brown lumps . Finally, the most potent form of cannabis is oil  which is produced by further refining cannabis resin. </th>
+     <th>Abusers will experience relaxed state, dilated pupils, hunger and more vivid senses of sight, smell, taste and touch after consumption. Increased talkativeness, mild hallucinations, clumsy and slow reactions. Long-term abusers commonly suffer endocrine disorder, conjunctivitis, bronchitis and smoking-related diseases. </th>
+    <th><button id="Cannabis" class="button">
+    	Add favorite
+  	</button></th>
+    	
+  	</button>
+	</tr>
+	<br><br><br>
+	<th><div id="Cocainetext">Cocaine </div>
+    <img src="cocaine.jpg"></th>
+  <th>Cocaine is a white powdery drug extracted from the leaves of coca plant. It is the most powerful naturally derived stimulant, which has properties similar to that of amphetamine. Currently, illicit cocaine is distributed in two forms, namely cocaine powder and crack cocaine.
+
+Cocaine powder and crack cocaine are stimulants of highly addictive nature.</th>
+  <th>Repeated snorting will severely damage the nasal mucous membrane. In general, abusers may experience hallucination, paranoia, aggressive behaviour, insomnia, loss of appetite, depression as well as high blood pressure, racing heartbeat and pupil dilation. Cardiac arrest, respiratory failure or other seizures may also occur in serious cases. </th>
+  <th><button id="Cocaine" class="button">
+    	Add favorite
+  	</button></th>
+    <br><br><br>
+	
+  <tr>
+    <th><div id="Herointext"> Heroin </div>
+    <img src="heroin.jpg"> </th>
+    <th>Heroin is a highly addictive narcotic drug derived from morphine which in turn is derived from the latex of the opium poppy. Heroin consumed by Hong Kong addicts is manufactured from opium poppies grown in the Golden Triangle and the drug is produced in a high purity (up to 90%), consumption ready state.
+
+In Hong Kong, heroin is normally consumed by injection or burning on tinfoil and inhaling the fumes. Heroin acts fast via either of these methods, taking 7 seconds to reach the brain after smoking or 15-30 seconds if injected.</th>
+  <th>Slowed and slurred speech , slow movement, constricted pupils, droopy eyelids, impaired night vision, sedation preceding comatose state and  vomiting. Heroin rapidly causes addiction, impairs the immune system, causes dry, itchy skin, constipation, reduced appetite, irregular heartbeat and blood pressure, menstrual irregularity and decreased sex drive. Repeated injection at the same site causes veins to collapse and septic infection of needle wounds is common. Death can occur from overdoses and diseases such as AIDS can be acquired from sharing needles. </th>
+  <th><button id="Heroin" class="button">
+    Add favorite
+    </button></th>
+  <br><br><br>
+  </tr>
+  
+  <tr>
+    <th><div id="Ketaminetext"> Ketamine </div>
+      <img src="ketamine.jpg"> </th>
+    <th>Ketamine Hydrochloride is a commercially produced general anaesthetic used mainly for sedating large animals. It is produced as an injectable clear colourless liquid which through evaporation can be converted to a white crystalline powder similar to cocaine hydrochloride. Abusers may experience an "out of body" or "near death" feeling.
+
+In Hong Kong, Ketamine mainly appears in powder form and the most common packaging method is by wrapping in a small piece of paper or a banknote. </th>
+  <th>Abusers may suffer from delirium, impaired memory, impaired motor function, respiratory / heart problems / dependence after long-term consumption. </th>
+  <th><button id="Ketamine" class="button">
+    Add favorite
+    </button></th>
+  <br><br><br>
+  </tr>
+  
+  <tr>
+    <th><div id="Methamphetaminetext"> Methamphetamine <img src="methamphetamine.jpg"> </div></th>
+    <th>Methamphetamine is a synthetic amphetamine or stimulant, produced in pill, powder, liquid or crystal form. The crystal form resembles ice, hence the slang name for the drug (ice). Ice is almost pure and therefore produces an intense sensation for the user.
+
+Ice is sold in small portions varying from a fraction of a gram to several grams and is often packaged in small ziplock bags.</th>
+  <th>After Consumption : Increased breathing rate, heartbeat and body temperature, impaired speech, dilated pupils, dry itchy skin, loss of appetite, insomnia, nervousness, false sense of confidence/power. Violent behaviour, hyperactivity, tremors and paranoia can result from large doses. Comedown can involve severe depression.
+
+Long term : Addiction. Chronic abuse produces psychosis similar to schizophrenia, causing picking at skin, self absorption, hallucinations and days or weeks without sleep. Kidney and lung disorders can affect users.</th>
+  <th><button id="Methamphetamine " class="button">
+    Add favorite
+    </button></th>
+  <br><br><br>
+  </tr>
+  </p>
+ 
+<div id="readfav">
+    	Read favorite list
+  	</div>
+
+   <table id="mytable">
+      <tr>
+          <td class = "tabnum"></td>
+           <td class = "tabname"></td>
+           <td class = "tablink"></td>
+		   <td class = "removelink"></td>
+          </tr>
+          <tr>
+          <td class = "tabnum"></td>
+           <td class = "tabname"></td>
+		   <td class = "tablink"></td>
+           <td class = "removelink"></td>
+          </tr>
+  </table>
+  </div>
+  
+</body>
+
+</html>

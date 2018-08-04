@@ -1,0 +1,175 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ 
+</head>
+  <style>
+    
+    table, th, td {
+    border: 1px solid black;
+}
+  <tr>
+          <td class = "tabnum"></td>
+           <td class = "tabname"></td>
+           <td class = "tablink"></td>
+          </tr>
+          <tr>
+          <td class = "tabnum"></td>
+           <td class = "tabname"></td>
+           <td class = "tablink"></td>
+          </tr> 
+  </style>
+
+<script>
+$(document).ready(function()
+{   
+ var portnum=9049
+ 
+ $.ajax({
+      url:"http://api.wunderground.com/api/b20b6bbf1fd069a8/geolook/conditions/q/HK/HongKong.json",
+	  data:"jsonp",
+	  success:function(parsed_json){
+		var temp_c=parsed_json['current_observation']['observation_location']['city'];
+		$("#temperature").html(temp_c);
+		}
+		});
+
+  
+  
+  $("#btnsignup").click(function()
+	{
+		alert("callnow");
+		var tempSearch;
+		//tempSearch = document.forms["search"]["searchkey"].value;
+		if(tempSearch == "")
+			{
+				alert("Please fill the field.");
+			}
+		else
+			{
+         var login=$("#login").val();
+         var pass=$("#mypass").val();
+        
+          var mydata="user="+login+"&pass="+pass;
+        var mylink="http://port-"+portnum+".20180606-chocoleung928829004.codeanyapp.com/Signup";
+        alert(mydata);
+				$.ajax(
+				{
+					/*url: "http://port-9000.305server-idm4smb32469.codeanyapp.com/Login", */
+					url: mylink,
+					type: 'POST',
+					data: mydata,
+					success: function(resultReturn)
+					{ 
+						//alert("search success");
+           alert(resultReturn);
+						//alert(JSON.stringify(resultReturn));
+			      var _stringObj = JSON.stringify(resultReturn);
+			      var stringObj = JSON.parse(resultReturn);
+			      for(i = 0; i < stringObj.length; i++)
+            {
+					    var num = i + 1;
+					    document.getElementsByClassName("tabnum")[i].innerHTML = num;
+					    document.getElementsByClassName("tabname")[i].innerHTML = stringObj[i].texttitle;
+				      document.getElementsByClassName("tablink")[i].innerHTML = stringObj[i].command;
+				     }
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+						console.log(textStatus);
+            alert(xhr.responseText);
+      		}
+				});
+			}
+   });
+   
+    $("#btnlogin").click(function()
+	{
+		//alert("callnow");
+		var tempSearch;
+		//tempSearch = document.forms["search"]["searchkey"].value;
+		if(tempSearch == "")
+			{
+				alert("Please fill the field.");
+			}
+		else
+			{
+         var login=$("#login").val();
+         var pass=$("#mypass").val();
+        
+          var mydata="user="+login+"&pass="+pass;
+        var mylink="http://port-"+portnum+".20180606-chocoleung928829004.codeanyapp.com/Signup";
+        alert(mydata);
+				$.ajax(
+				{
+					/*url: "http://port-9000.305server-idm4smb32469.codeanyapp.com/Login", */
+					url: mylink,
+					type: 'POST',
+					data: mydata,
+					success: function(resultReturn)
+					{ 
+						//alert("search success");
+           alert("login result="+resultReturn);
+					
+					if(resultReturn=="Login Success"){
+					  localStorage.setItem("mylogin",login);
+					  alert(localStorage.getItem("mylogin"));
+					    window.location.href="/favpage";
+					 }
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+						console.log(textStatus);
+            alert(xhr.responseText);
+      		}
+				});
+			}
+   });
+});
+</script>
+<body>
+  <div class = "mask">
+    <h1 style="center;">Pleas Singup Here</h1>
+	  <button><a href="/favlist">favouritelist</a> </button>  <button><a href="/logout">log out</a></button>
+  	<br>
+     <br>
+    <table style="width:100%"> 
+    <tr>
+  	<form id="formID" name="search">
+			<th>login: <input type="text" id="login"/></th>
+     <th> pass: <input type="password" id="mypass"/></th>
+		</form>
+  	<th><button id="btnsignup" class="button button1">
+    	Signup
+      </button></th>
+	<th><button id="btnlogin" class="button button1">
+    	Login
+    </button></th>
+    <br>
+  <table id="mytable">
+      <tr>
+          <td class = "tabnum"></td>
+           <td class = "tabname"></td>
+           <td class = "tablink"></td>
+          </tr>
+          <tr>
+          <td class = "tabnum"></td>
+           <td class = "tabname"></td>
+           <td class = "tablink"></td>
+          </tr>
+  </table>
+      <div style="center;">
+    <img src="drugs4.jpg">
+      </div>
+ <div class = "style3">
+  <br>
+    <b>Anti-drug Telephone Enquiry Service : 186 186</b>
+  <br>
+    <b>Anti-drug Instant Messaging Enquiry Sevrvice : 98 186 186</b>
+  <br>
+
+    
+  </div>
+</body>
+
+</html>

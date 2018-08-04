@@ -1,0 +1,150 @@
+
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+ <style>
+ 
+   table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+   }
+    <tr>
+          <td class = "tabnum"></td>
+           <td class = "tabname"></td>
+           <td class = "tablink"></td>
+          </tr>
+          <tr>
+          <td class = "tabnum"></td>
+           <td class = "tabname"></td>
+           <td class = "tablink"></td>
+          </tr>
+  </style>
+
+<script>
+$(document).ready(function()
+{   
+  
+	// handle button clicks         
+  $('#buttonID').click(function() 
+	{
+		// make an ajax call
+		alert($('#formID').serialize());
+    $.ajax(
+		{
+            dataType: 'jsonp',
+            jsonpCallback: '_wrapper',
+            data: $('#formID').serialize(),
+            type: 'POST',
+            //url: "http://port-8080.305server-idm4smb32469.codeanyapp.com/Signup",
+            url: "http://port-9049.20180606-chocoleung928829004.codeanyapp.com/newlogin",
+            success: handleButtonResponse,
+        });
+    });
+
+    function handleButtonResponse(data)
+    {
+      alert(data);
+      // parse the json string
+      var jsonObject = JSON.parse(data);
+      $('#reponseID').append( jsonObject.message );
+    }
+  
+  $("#btnSearch").click(function()
+	{
+		//alert("callnow");
+		var tempSearch;
+		//tempSearch = document.forms["search"]["searchkey"].value;
+		if(tempSearch == "")
+			{
+				alert("Please fill the field.");
+			}
+		else
+			{
+         var login=$("#login").val();
+         var pass=$("#mypass").val();
+        
+         var mydata="user="+login+"&pass="+pass;
+        alert(mydata);
+				$.ajax(
+				{
+					url: "http://port-9049.20180606-chocoleung928829004.codeanyapp.com/newlogin", 
+          //url: "http://port-6015.20180606-chocoleung928829004.codeanyapp.com/Signup",
+					type: 'POST',
+					data: mydata,
+					success: function(resultReturn)
+					{ 
+						//alert("search success");
+            alert(resultReturn);
+						//alert(JSON.stringify(resultReturn))
+			      var _stringObj = JSON.stringify(resultReturn);
+			      var stringObj = JSON.parse(resultReturn);
+			      for(i = 0; i < stringObj.length; i++)
+            {
+					    var num = i + 1;
+					    document.getElementsByClassName("tabnum")[i].innserHTML = num;
+					    document.getElementsByClassName("tabname")[i].innerHTML = stringObj[i].texttitle;
+				      document.getElementsByClassName("tablink")[i].innerHTML = stringObj[i].command;
+				     }
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+						console.log(textStatus);
+            alert(xhr.responseText);
+      		}
+				});
+			}
+   });
+});
+</script>
+<body>
+ 
+   <body style="background-color:LightSteelBlue;"></body> 
+  
+  
+  <div class = "mask">
+	<h1 style="text-align:center;">Welcome to the loginpage!</h1>
+   <button> <a href="/favlist">favouritelist</a></button> <button><a href="/logout">log out</a></button>
+  	<br>
+    <br>
+    <table style="width:100%"> 
+    <tr>
+  	<form id="formID" name="search">
+     <th>login: <input type="text" id="login"/></th> 
+      <th>pass: <input type="text" id="mypass"/></th> 
+     	</form>
+  	<th><button id="btnSearch" class="button button1">
+    	search
+      </tr>
+  	</button></th>
+    </table>
+    <br>
+  <table id="mytable">
+      <tr>
+          <td class = "tabnum"></td>
+           <td class = "tabname"></td>
+           <td class = "tablink"></td>
+          </tr>
+          <tr>
+          <td class = "tabnum"></td>
+           <td class = "tabname"></td>
+           <td class = "tablink"></td>
+          </tr>
+  </table>
+  <br>
+  <iframe width="420" height="345" src="https://www.youtube.com/embed/roUddYLkhuQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  <br>
+  <br>
+  <br>  
+    <div class = "style3">
+  <br>
+    <b>Anti-drug Telephone Enquiry Service : 186 186</b>
+  <br>
+    <b>Anti-drug Instant Messaging Enquiry Sevrvice : 98 186 186</b>
+  <br>
+
+  </div>
+    
+</body>
+
+</html>

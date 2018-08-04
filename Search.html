@@ -1,0 +1,285 @@
+
+<html>
+
+
+<script>
+function tableFilter() {
+
+		var input, filter, table, tr, td, i;
+		input = document.getElementById("myInput");
+		filter = input.value.toUpperCase();
+		table = document.getElementById("myTable");
+		tr = table.getElementsByTagName("tr");
+		for (i = 0; i < tr.length; i++) {
+		
+			td = tr[i].getElementsByTagName("td")[0];
+			if (td) {
+				if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
+				}
+			}       
+		}
+	}
+</script>
+
+<body>
+  
+  
+  
+  
+  
+  
+  
+  
+
+   <body style="background-color:WhiteSmoke ;"></body> 
+  
+<table id="myTable">
+						<tr class="header">
+						<input fron="center" type="text" id="myInput" onkeyup="tableFilter()" placeholder="Search for content.." title="Type in a name">
+		
+						
+						<br>
+              <br>
+  						</tr>
+
+						<tr>
+							<td>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h3 class="panel-title">
+											<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#qa1">
+												Understanding Drug Use and Addiction
+												<i class="fa fa-angle-right pull-right"></i>
+											</a>
+										</h3>
+									</div>
+									<div id="qa1" class="panel-collapse collapse">
+										<div class="panel-body">
+
+											<p>Many people do not understand why or how other people become addicted to drugs. They may mistakenly think that those who use drugs lack moral principles or willpower and that they could stop their drug use simply by choosing to. In reality, drug addiction is a complex disease, and quitting usually takes more than good intentions or a strong will. Drugs change the brain in ways that make quitting hard, even for those who want to. Fortunately, researchers know more than ever about how drugs affect the brain and have found treatments that can help people recover from drug addiction and lead productive lives.</p>
+											<br>
+                      <br>
+										</div>
+									</div>
+								</div>
+							</td>						
+						</tr>
+  <br>  
+  <br>  
+  <br>  
+						<tr>
+							<td>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h3 class="panel-title">
+											<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#qa2">
+												What Is drug addiction?
+												<i class="fa fa-angle-right pull-right"></i>
+											</a>
+										</h3>
+									</div>
+									<div id="qa2" class="panel-collapse collapse">
+										<div class="panel-body">										
+		
+											<p>
+											Addiction is a chronic disease characterized by drug seeking and use that is compulsive, or difficult to control, despite harmful consequences. The initial decision to take drugs is voluntary for most people, but repeated drug use can lead to brain changes that challenge an addicted persons self control and interfere with their ability to resist intense urges to take drugs. These brain changes can be persistent, which is why drug addiction is considered a relapsing disease people in recovery from drug use disorders are at increased risk for returning to drug use even after years of not taking the drug.
+
+                        It is common for a person to relapse, but relapse does not mean that treatment does not work. As with other chronic health conditions, treatment should be ongoing and should be adjusted based on how the patient responds. Treatment plans need to be reviewed often and modified to fit the patients changing needs.</p>
+			                 <br>
+                      <br>
+                      
+                      
+										</div>
+									</div>
+								</div>
+							</td>						
+						</tr>
+						
+						<tr>
+							<td>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h3 class="panel-title">
+											<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#qa3">
+												What happens to the brain when a person takes drugs?
+												<i class="fa fa-angle-right pull-right"></i>
+											</a>
+										</h3>
+									</div>
+									<div id="qa3" class="panel-collapse collapse">
+										<div class="panel-body">
+											<p>
+                       Most drugs affect the brains reward circuit, causing euphoria as well as flooding it with the chemical messenger dopamine. A properly functioning reward system motivates a person to repeat behaviors needed to thrive, such as eating and spending time with loved ones. Surges of dopamine in the reward circuit cause the reinforcement of pleasurable but unhealthy behaviors like taking drugs, leading people to repeat the behavior again and again.
+
+As a person continues to use drugs, the brain adapts by reducing the ability of cells in the reward circuit to respond to it. This reduces the high that the person feels compared to the high they felt when first taking the drug—an effect known as tolerance. They might take more of the drug to try and achieve the same high. These brain adaptations often lead to the person becoming less and less able to derive pleasure from other things they once enjoyed, like food, sex, or social activities.
+
+Long-term use also causes changes in other brain chemical systems and circuits as well, affecting functions that include:
+                        <li>learning</li>
+                        <li>judgment</li>
+                        <li>decision-making</li>
+                        <li>stress</li>
+                        <li>memory</li>
+                        <li>behavior</li>
+                        <br>
+                        <br>
+                        Despite being aware of these harmful outcomes, many people who use drugs continue to take them, which is the nature of addiction.
+                        <br>
+                      <br>
+                      </p>
+	
+										</div>
+									</div>
+								</div>
+							</td>						
+						</tr>
+						
+						<tr>
+							<td>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h3 class="panel-title">
+											<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#qa4">
+												Why do some people become addicted to drugs while others don't?
+												<i class="fa fa-angle-right pull-right"></i>
+											</a>
+										</h3>
+									</div>
+									<div id="qa4" class="panel-collapse collapse">
+										<div class="panel-body">
+										<p>
+                      No one factor can predict if a person will become addicted to drugs. A combination of factors influences risk for addiction. The more risk factors a person has, the greater the chance that taking drugs can lead to addiction. For example:
+                      <li>Biology. The genes that people are born with account for about half of a persons risk for addiction. Gender, ethnicity, and the presence of other mental disorders may also influence risk for drug use and addiction.</li>
+                      <li>Environment. A persons environment includes many different influences, from family and friends to economic status and general quality of life. Factors such as peer pressure, physical and sexual abuse, early exposure to drugs, stress, and parental guidance can greatly affect a persons likelihood of drug use and addiction.</li>
+                      <li>Development. Genetic and environmental factors interact with critical developmental stages in a person’s life to affect addiction risk. Although taking drugs at any age can lead to addiction, the earlier that drug use begins, the more likely it will progress to addiction. This is particularly problematic for teens. Because areas in their brains that control decision making, judgment, and self control are still developing, teens may be especially prone to risky behaviors, including trying drugs.</li>
+                      <br>
+                      <br>
+                      </p>
+										</div>
+									</div>
+								</div>
+							</td>						
+						</tr>
+						
+						<tr>
+							<td>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h3 class="panel-title">
+											<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#qa5">
+												Can drug addiction be cured or prevented?
+												<i class="fa fa-angle-right pull-right"></i>
+											</a>
+										</h3>
+									</div>
+									<div id="qa5" class="panel-collapse collapse">
+										<div class="panel-body">
+										<p>As with most other chronic diseases, such as diabetes, asthma, or heart disease, treatment for drug addiction generally is not a cure. However, addiction is treatable and can be successfully managed. People who are recovering from an addiction will be at risk for relapse for years and possibly for their whole lives. Research shows that combining addiction treatment medicines with behavioral therapy ensures the best chance of success for most patients. Treatment approaches tailored to each patients drug use patterns and any co-occurring medical, mental, and social problems can lead to continued recovery.
+                  </p>
+                      <p>
+                      More good news is that drug use and addiction are preventable. Results from NIDA funded research have shown that prevention programs involving families, schools, communities, and the media are effective for preventing or reducing drug use and addiction. Although personal events and cultural factors affect drug use trends, when young people view drug use as harmful, they tend to decrease their drug taking. Therefore, education and outreach are key in helping people understand the possible risks of drug use. Teachers, parents, and health care providers have crucial roles in educating young people and preventing drug use and addiction.  
+                      </p>
+                      <br>
+                      <br>
+                      <p>
+                      <h4> Points to Remember</h4>
+                      <li>Drug addiction is a chronic disease characterized by drug seeking and use that is compulsive, or difficult to control, despite harmful consequences.</li>
+	                    <li>Brain changes that occur over time with drug use challenge an addicted person’s self-control and interfere with their ability to resist intense urges to take drugs. This is why drug addiction is also a relapsing disease.</li>                    
+                      <li>Relapse is the return to drug use after an attempt to stop. Relapse indicates the need for more or different treatment.</li>
+                      <li>Most drugs affect the brains reward circuit by flooding it with the chemical messenger dopamine. Surges of dopamine in the reward circuit cause the reinforcement of pleasurable but unhealthy activities, leading people to repeat the behavior again and again.</li>                   
+                      <li>Over time, the brain adjusts to the excess dopamine, which reduces the high that the person feels compared to the high they felt when first taking the drug—an effect known as tolerance. They might take more of the drug, trying to achieve the same dopamine high.</li>
+                      <li>No single factor can predict whether a person will become addicted to drugs. A combination of genetic, environmental, and developmental factors influences risk for addiction. The more risk factors a person has, the greater the chance that taking drugs can lead to addiction.</li>
+                      <li>Drug addiction is treatable and can be successfully managed.</li>
+                      <li>More good news is that drug use and addiction are preventable. Teachers, parents, and health care providers have crucial roles in educating young people and preventing drug use and addiction.</li>
+                      
+                      </p>
+                    <br>
+                     <br>
+                    </div>
+									</div>
+								</div>
+							</td>						
+						</tr>
+						
+						<tr>
+							<td>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h3 class="panel-title">
+											<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#qa6">
+												More information
+												<i class="fa fa-angle-right pull-right"></i>
+											</a>
+										</h3>
+									</div>
+									<div id="qa6" class="panel-collapse collapse">
+										<div class="panel-body">
+
+<p>
+	For information about understanding drug use and addiction, visit:
+</p>
+
+<ul><li>
+		<a href="/publications/drugs-brains-behavior-science-addiction/drug-abuse-addiction">www.drugabuse.gov/publications/drugs-brains-behavior-science-addiction/drug-abuse-addiction</a>
+	</li>
+	<li>
+		<a href="https://teens.drugabuse.gov/drug-facts/brain-and-addiction">https://teens.drugabuse.gov/drug-facts/brain-and-addiction</a>
+	</li>
+	<li>
+		<a href="https://easyread.drugabuse.gov">https://easyread.drugabuse.gov</a>
+	</li>
+</ul><p>
+	For more information about the costs of drug abuse to the United States, visit:
+</p>
+
+<ul><li>
+		<a href="/related-topics/trends-statistics#costs">www.drugabuse.gov/related-topics/trends-statistics#costs</a>
+	</li>
+</ul><p>
+	For more information about prevention, visit:
+</p>
+
+<ul><li>
+		<a href="/related-topics/prevention">www.drugabuse.gov/related-topics/prevention</a>
+	</li>
+</ul><p>
+	For more information about treatment, visit:
+</p>
+
+<ul><li>
+		<a href="/related-topics/treatment">www.drugabuse.gov/related-topics/treatment</a>
+	</li>
+</ul><p>
+	To find a publicly funded treatment center in your state, call 1-800-662-HELP or visit:
+</p>
+
+<ul><li>
+		<a href="https://findtreatment.samhsa.gov/">https://findtreatment.samhsa.gov/</a>
+	</li>
+</ul><div class="textbox gray">This publication is available for your use and may be reproduced <strong>in its entirety</strong> without permission from the NIDA. Citation of the source is appreciated, using the following language: Source: National Institute on Drug Abuse; National Institutes of Health; U.S. Department of Health and Human Services.</div>
+                      
+                      
+                      
+                      
+                      <br>
+                      <br>
+											<p>
+												<span class="bold">Learn more:</span></p>
+											<p>
+												<a href="https://www.drugabuse.gov/publications/drugfacts/understanding-drug-use-addiction" rel="external" target="_blank"><span class="access">This link will open in a new window</span>Guidance on CCTV Surveillance and Use of Drones</a></p>
+
+											
+										</div>
+									</div>
+								</div>
+							</td>						
+						</tr>
+						
+					</table>
+					
+					
+</body>
+
+</html>
